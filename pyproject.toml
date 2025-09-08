@@ -1,0 +1,17 @@
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp_bitbucket_review"
+version = "0.1.0"
+description = "A simple MCP server for Bitbucket"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dynamic = ["scripts"]
+license = {text = "MIT"}

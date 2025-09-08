@@ -1,0 +1,2 @@
+[console_scripts]
+mcp-bitbucket-review-server = mcp_bitbucket_review.mcp_bitbucket_review_server:main
