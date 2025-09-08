@@ -16,13 +16,13 @@ pip install mcp-bitbucket-review
 
 2.  Add a new MCP server.
 
-3.  Add the following to the mcpServers object of mcp.json:
-    ```json
+3.  Add the bitbucket server MCP from the following to the mcpServers object of mcp.json:
+    ```jsonc
     {
         "mcpServers": {
-            ....
+            // ... your rest of the MCP servers
             "bitbucket": {
-            "command": "mcp-bitbucket-review-server",
+                "command": "mcp-bitbucket-review-server",
                 "env": {
                     "BITBUCKET_EMAIL": "YOUR_BITBUCKET_EMAIL",
                     "BITBUCKET_API_TOKEN": "YOUR_BITBUCKET_API_TOKEN"
