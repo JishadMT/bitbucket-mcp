@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mcp_bitbucket_review"
-version = "0.1.0"
+version = "0.1.1"
 description = "A simple MCP server for Bitbucket"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -14,4 +14,14 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dynamic = ["scripts"]
-license = {text = "MIT"}
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+dependencies = [
+    "fastmcp",
+    "requests",
+    "urllib3",
+]
+
+[project.urls]
+Homepage = "https://github.com/JishadMT/bitbucket-mcp"
+Issues = "https://github.com/JishadMT/bitbucket-mcp/issues"

@@ -4,6 +4,9 @@ This is an MCP server for LLMs to use capabilities of bitbucket to it's code rev
 
 ## Installation
 
+> [!IMPORTANT]  
+> You need python 3.10 or above for this to work.
+
 Install from pip:
 
 ```bash
@@ -37,7 +40,7 @@ pip install mcp-bitbucket-review
 
 Open new chat and give following prompt:
 
-`Review pull request <YOUR_PULL_REQUEST_URL>`
+> Review pull request <YOUR_PULL_REQUEST_URL>
 
 
 ## Get API token from bitbucket

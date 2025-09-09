@@ -8,4 +8,5 @@ src/mcp_bitbucket_review.egg-info/PKG-INFO
 src/mcp_bitbucket_review.egg-info/SOURCES.txt
 src/mcp_bitbucket_review.egg-info/dependency_links.txt
 src/mcp_bitbucket_review.egg-info/entry_points.txt
+src/mcp_bitbucket_review.egg-info/requires.txt
 src/mcp_bitbucket_review.egg-info/top_level.txt

@@ -7,7 +7,7 @@ from urllib.parse import urlparse
 import requests
 from fastmcp import FastMCP
 
-mcp = FastMCP("My MCP Server")
+mcp = FastMCP("Bitbucket MCP Server")
 
 @mcp.tool
 def get_bitbucket_creds() -> tuple:
