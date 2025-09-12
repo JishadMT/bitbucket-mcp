@@ -237,6 +237,55 @@ def get_bitbucket_pr_diff(
     except requests.RequestException as e:
         raise requests.RequestException(f"Failed to fetch PR diff: {e}")
 
+@mcp.tool
+def get_code_review_checklist(repository_name: str) -> list[str]:
+    """
+    Get code review checklist which acts as a guideline to review pull request. LLM must call this to get repository specific review guidelines.
+
+    Args:
+        repository_name (str): The name of the repository.
+
+    Returns:
+        list[str]: A list of checklist items.
+    """
+    checklist_filename = os.getenv('BITBUCKET_CODE_REVIEW_CHECKLIST')
+
+    default_checklist =  [
+        "Analyze this function for potential logical errors and confirm it correctly implements the business logic.",
+        "Review this code snippet to ensure all resources (e.g., database connections, file streams) are properly and timely disposed of.",
+        "Critique this pull request for security vulnerabilities, race conditions, and general adherence to best practices.",
+        "Generate comprehensive unit tests for this module, focusing on full code coverage and edge case handling.",
+        "Refactor this database query for improved performance and enhanced security against SQL injection attacks."
+    ]
+
+    try:
+        with open(checklist_filename, 'r') as f:
+            lines = f.readlines()
+
+        checklists = {}
+        current_repo = None
+        for line in lines:
+            line = line.strip()
+            if line.startswith('[') and line.endswith(']'):
+                current_repo = line[1:-1].lower()
+                checklists[current_repo] = []
+            elif current_repo and line:
+                if line.startswith('-'):
+                    line = line[1:].lstrip()
+                checklists[current_repo].append(line)
+
+        repo_checklist = checklists.get(repository_name.lower(), [])
+        general_checklist = checklists.get('general', [])
+
+        combined_checklist = general_checklist + repo_checklist
+
+        if not combined_checklist:
+            return default_checklist
+        return combined_checklist
+    except (FileNotFoundError, TypeError):
+        return default_checklist
+
+
 def main():
     mcp.run()
 
